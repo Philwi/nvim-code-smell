@@ -9,6 +9,9 @@ local defaults = {
   outputs = {
     "buffer",
     "quickfix"
+  },
+  keymaps = {
+    run_diagnostic = "<leader>q"
   }
 }
 

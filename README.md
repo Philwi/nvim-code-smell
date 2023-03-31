@@ -17,7 +17,6 @@ return {
 ```
 
 ## Configuration
-
 ```lua
 {
   smell_finders = {
@@ -26,6 +25,9 @@ return {
   outputs = {
     "buffer",
     "quickfix"
+  },
+  keymaps = {
+    run_diagnostic = "<leader>q"
   }
 }
 ```
