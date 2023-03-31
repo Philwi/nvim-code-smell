@@ -1,0 +1,8 @@
+/home/oimelbude/Projects/personal/kook-surf/api/app/actions/spots/index.rb -- 7 warnings:
+  [39, 40]:DuplicateMethodCall: Spots::Index#fetch_near_spots calls 'input[:contract]' 2 times [https://github.com/troessner/reek/blob/v6.1.3/docs/Duplicate-Method-Call.md]
+  [39, 40, 44]:FeatureEnvy: Spots::Index#fetch_near_spots refers to 'input' more than self (maybe move it to another class?) [https://github.com/troessner/reek/blob/v6.1.3/docs/Feature-Envy.md]
+  [58, 60]:FeatureEnvy: Spots::Index#prepare_response refers to 'kook_spot' more than self (maybe move it to another class?) [https://github.com/troessner/reek/blob/v6.1.3/docs/Feature-Envy.md]
+  [59, 60]:FeatureEnvy: Spots::Index#prepare_response refers to 'surfline_spot' more than self (maybe move it to another class?) [https://github.com/troessner/reek/blob/v6.1.3/docs/Feature-Envy.md]
+  [6]:IrresponsibleModule: Spots::Index has no descriptive comment [https://github.com/troessner/reek/blob/v6.1.3/docs/Irresponsible-Module.md]
+  [54]:TooManyStatements: Spots::Index#prepare_response has approx 6 statements [https://github.com/troessner/reek/blob/v6.1.3/docs/Too-Many-Statements.md]
+  [24]:UtilityFunction: Spots::Index#parse doesn't depend on instance state (maybe move it to another class?) [https://github.com/troessner/reek/blob/v6.1.3/docs/Utility-Function.md]

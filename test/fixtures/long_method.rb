@@ -1,0 +1,16 @@
+def long_method
+  puts "foo"
+  puts "bar"
+  puts "baz"
+  puts "qux"
+  puts "quux"
+  puts "quuz"
+  puts "corge"
+  puts "grault"
+  puts "garply"
+  puts "waldo"
+  puts "fred"
+  puts "plugh"
+  puts "xyzzy"
+  puts "thud"
+end

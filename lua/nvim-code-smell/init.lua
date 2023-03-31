@@ -1,31 +1,28 @@
--- Laden von Neovim API
-local api = vim.api
 local smell_finders = require('nvim-code-smell.smell-finders')
 local outputs = require('nvim-code-smell.outputs')
+local config = require('nvim-code-smell.config')
+local functions = require('nvim-code-smell.functions')
 
--- Funktion, um die Auswertung auszuführen und die Ergebnisse anzuzeigen
-local function run_diagnostic()
-  local reek_output_lines = smell_finders.run()
+local NvimCodeSmell = functions
 
-  for _, line in ipairs(reek_output_lines) do
-    local line_number = string.match(line, '(%d+)')
-    local warning = string.match(line, '(.*)')
-
-    if line_number == nil or warning == nil then
-      print("Fehler bei der Verarbeitung der Zeile: " .. line)
-    else
-      outputs.add_warning(line_number, warning)
-    end
-  end
-
-  api.nvim_command('redraw')
+function NvimCodeSmell.setup(options)
+  config.setup(options)
 end
 
+local function clear()
+  outputs.clear()
+end
 
--- Kommando, um die Diagnose auszuführen
+function NvimCodeSmell.run_diagnostic()
+  clear()
+
+  local smells = smell_finders.run()
+  outputs.add_warning(smells)
+end
+
 vim.cmd([[command! RunDiagnostic lua require('nvim-code-smell').run_diagnostic()]])
+vim.cmd([[command! RunDiagnosticOnSave lua require('nvim-code-smell').run_diagnostic_on_save()]])
+vim.cmd([[command! RunDiagnosticOnOpen lua require('nvim-code-smell').run_diagnostic_on_open()]])
+vim.cmd([[command! RunDiagnosticOnOpenAndSave lua require('nvim-code-smell').run_diagnostic_on_open_and_save()]])
 
--- Rückgabe der Funktion, um sie in anderen Modulen verwenden zu können
-return {
-  run_diagnostic = run_diagnostic
-}
+return NvimCodeSmell
