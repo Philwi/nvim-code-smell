@@ -5,6 +5,10 @@ local functions = require('nvim-code-smell.functions')
 
 local NvimCodeSmell = functions
 
+function NvimCodeSmell.disable()
+  outputs.disable()
+end
+
 local function add_keymaps()
   local api = vim.api
   local opts = { noremap = true, silent = true }
@@ -12,6 +16,9 @@ local function add_keymaps()
   local keymaps = config.options.keymaps
   local run_diagnostic = keymaps.run_diagnostic
   api.nvim_set_keymap('n', run_diagnostic, ':RunDiagnostic<CR>', opts)
+
+  local disable = keymaps.disable
+  api.nvim_set_keymap('n', disable, ':DisableNvimCodeSmell<CR>', opts)
 end
 
 function NvimCodeSmell.setup(options)

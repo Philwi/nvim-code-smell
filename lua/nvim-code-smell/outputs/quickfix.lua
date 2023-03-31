@@ -30,7 +30,19 @@ function Quickfix.add_warning(smells)
   end
 
   vim.fn.setqflist(quickfix_list)
+  vim.api.nvim_set_var("nvim_code_smell_quickfix_enabled", true)
   vim.api.nvim_command("copen")
+end
+
+function Quickfix.disable()
+  local is_enabled = vim.api.nvim_get_var("nvim_code_smell_quickfix_enabled")
+
+  if is_enabled then
+    vim.api.nvim_set_var("nvim_code_smell_quickfix_enabled", false)
+    Quickfix.clear()
+  else
+    vim.api.nvim_set_var("nvim_code_smell_quickfix_enabled", true)
+  end
 end
 
 return Quickfix

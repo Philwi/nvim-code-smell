@@ -25,4 +25,14 @@ function Outputs.clear()
   end
 end
 
+function Outputs.disable()
+  if utils.include(config.options.outputs, 'buffer') then
+    buffer.disable()
+  end
+
+  if utils.include(config.options.outputs, 'quickfix') then
+    quickfix.disable()
+  end
+end
+
 return Outputs

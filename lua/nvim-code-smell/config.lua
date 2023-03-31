@@ -11,7 +11,8 @@ local defaults = {
     "quickfix"
   },
   keymaps = {
-    run_diagnostic = "<leader>q"
+    run_diagnostic = "<leader>q", -- run configured smell_finders
+    disable = "<leader>Q", -- disable all diagnostic outputs
   }
 }
 
